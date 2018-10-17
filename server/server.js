@@ -20,12 +20,11 @@ io.on('connection', (socket) =>{
   socket.broadcast.emit('newMessage', generateMessage("Admin","New user joined"));
   socket.on('createMessage', (message) =>{
     console.log(message);
-    // socket.broadcast.emit('newMessage', {
-    //   from: message.from,
-    //   text: message.text,
-    //   createAt: new Date().getTime()
-    // });
     io.emit('newMessage', generateMessage(message.from,message.text));
+  });
+
+  socket.on('createLocationMessage', (coords) =>{
+    io.emit('newMessage', generateMessage('Admin', `${coords.latitude}, ${coords.longitude}`));
   });
 
   socket.on('disconnect', () => {
