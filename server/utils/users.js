@@ -1,16 +1,3 @@
-[{
-  id: 'socket ID',
-  name: 'Andere',
-  room: 'The ffo dans'
-}]
-
-
-
-//addUser(id, name, room) method
-//removeUser(id,)
-//getUser(id)
-//getUserList(room)
-
 
 class Users {
   constructor () {
@@ -20,6 +7,7 @@ class Users {
   addUser (id, name, room) {
     var user = { id, name, room };
     this.users.push(user);
+
     return user;
   }
 
@@ -33,7 +21,7 @@ class Users {
   }
 
   getUser (id) {
-    return userToFind = this.users.find( user => user.id === id);
+    return  this.users.find( user => user.id === id);
   }
 
   getUserList (room) {
@@ -44,7 +32,6 @@ class Users {
     var namesArray = users.map( (user) => {
       return user.name;
     });
-
     return namesArray;
   }
 }
